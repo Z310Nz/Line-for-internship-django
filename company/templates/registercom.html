@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Company Regisration Form</title> 
+</head>
+<body>
+    <div class="container">
+        <header>Registration</header>
+
+        <form action="#">
+            <div class="form first">
+                <div class="company details">
+                    <lebel>Company logo</lebel>
+                    <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file">
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Company name</label>
+                            <input type="text" placeholder="Enter your company name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Foundation date</label>
+                            <input type="date" placeholder="Choose your company foundation date" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Company type</label>
+                            <input type="text" placeholder="Enter your company type" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Number of employee</label>
+                            <input type="number" placeholder="Enter number of employee" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Website</label>
+                            <input type="text" placeholder="Enter your company website" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" placeholder="Enter your company email" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Company Address">
+                    <span class="title">Company Address</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Address</label>
+                            <input type="text" placeholder="Enter your company address" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>City</label>
+                            <input type="text" placeholder="Enter your company city" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>State/Province</label>
+                            <input type="text" placeholder="Enter your company state/province" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Country</label>
+                            <input type="text" placeholder="Enter your company country" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Postal code</label>
+                            <input type="number" placeholder="Enter your company postal code" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Address label</label>
+                            <select required>
+                                <option disabled selected>Select lebel</option>
+                                <option>Business</option>
+                                <option>Home</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="nextBtn">
+                        <span class="btnText">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div> 
+            </div>
+
+            <div class="form second">
+                <div class="Jobs details">
+                    <span class="title">Jobs details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Work place</label>
+                            <input type="text" placeholder="Onsite/Hybrid/Online" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Work type</label>
+                            <input type="text" placeholder="full-time/part-time/Intern" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Qualification</label>
+                            <input type="text" placeholder="Enter qualification" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Company benefits</label>
+                            <input type="text" placeholder="Enter company benefits" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Time to clock in</label>
+                            <input type="time" placeholder="Enter Time to clock in" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Time to clock out</label>
+                            <input type="time" placeholder="Enter Time to clock out" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Working day</label>
+                            <select required>
+                                <option disabled selected>Select number of working day in a week</option>
+                                <option>5 day per week</option>
+                                <option>6 day per week</option>
+                                <option>Others</option>
+                            </select>
+                        </div>           
+                    </div>
+                </div>
+
+                <!--<div class="details family">
+                    <span class="title">Family Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Father Name</label>
+                            <input type="text" placeholder="Enter father name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Mother Name</label>
+                            <input type="text" placeholder="Enter mother name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Grandfather</label>
+                            <input type="text" placeholder="Enter grandfther name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Spouse Name</label>
+                            <input type="text" placeholder="Enter spouse name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Father in Law</label>
+                            <input type="text" placeholder="Father in law name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Mother in Law</label>
+                            <input type="text" placeholder="Mother in law name" required>
+                        </div>
+                    </div>-->
+
+                    <div class="buttons">
+                        <div class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">Back</span>
+                        </div>
+                        
+                        <button class="sumbit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+        </form>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Company Login</title>
+  </head>
+    <!-- Your LINE login UI goes here -->
+    <h2>Company Login</h2>
+    <form action="company_login.php" method="post">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required><br><br>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required><br><br>
+      <input type="submit" value="Login">
+    </form>
+    <br>
+    <button onclick="window.location.href='{% url 'company:register' %}'">
+      Company
+    </button>
+  </body>
+</html>
