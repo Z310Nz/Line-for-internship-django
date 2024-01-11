@@ -1,10 +1,19 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <title>Student Login</title>
+    <title>student Login</title>
   </head>
-  <body>
     <!-- Your LINE login UI goes here -->
-    <h2>Student Login</h2>
+    <h2>student Login</h2>
+    <form action="company_login.php" method="post">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required><br><br>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required><br><br>
+      <input type="submit" value="Login">
+    </form>
+    <br>
+    <button onclick="window.location.href='{% url 'student:register' %}'">
+      student
+    </button>
   </body>
 </html>
