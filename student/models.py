@@ -25,6 +25,7 @@ class Student(models.Model):
     intern_start = models.DateField()
     intern_end = models.DateField()
     eng_skill = models.CharField(max_length=200)
+    id_line = models.CharField(max_length=255, blank=True)
     # Add other fields as needed
 
     def __str__(self):

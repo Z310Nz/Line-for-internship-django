@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-&csdciu#fzsd=(-gan+w%+x#^6ov8ze@i*mupyf9dly2#0rr0+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'bb51-183-88-21-175.ngrok-free.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'bb51-183-88-21-175.ngrok-free.app', '.vercel.app']
 
 CORS_ALLOWED_ORIGINS = [
     "https://bb51-183-88-21-175.ngrok-free.app",
