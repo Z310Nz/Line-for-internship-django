@@ -13,5 +13,16 @@
       "dest": "lineforintern/wsgi.py",
       "methods": ["GET"]
     }
-  ]
+  ],
+  "config": {
+    "maxLambdaSize": "15mb",
+    "runtime": "python3.9",
+    "build": {
+      "functions": {
+        "api/**/*.py": {
+          "runtime": "python3.9"
+        }
+      }
+    }
+  }
 }
