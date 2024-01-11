@@ -1,19 +1,21 @@
 <html>
   <head>
-    <title>student Login</title>
+    <title>Student Login</title>
   </head>
+  <body>
     <!-- Your LINE login UI goes here -->
-    <h2>student Login</h2>
-    <form action="company_login.php" method="post">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" required><br><br>
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" required><br><br>
-      <input type="submit" value="Login">
-    </form>
-    <br>
+    <h2>Student Login</h2>
+    <a
+      href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2001579846&redirect_uri=https://bb51-183-88-21-175.ngrok-free.app/student/login/callback/&state=YOUR_STATE&scope=openid%20profile"
+    >
+      <img
+        alt="Login with LINE"
+        src="https://scdn.line-apps.com/n/line_login/btn.png"
+      />
+    </a>
+    <br />
     <button onclick="window.location.href='{% url 'student:register' %}'">
-      student
+      Register as a Student
     </button>
   </body>
 </html>

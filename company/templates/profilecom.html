@@ -1,0 +1,11 @@
+<!-- profilecom.html -->
+<h1>Company Profile</h1>
+<p>Company Name: {{ company.name }}</p>
+<p>Company Line ID: {{ company.line_id }}</p>
+
+<h2>Jobs:</h2>
+<ul>
+  {% for job in jobs %}
+  <li>{{ job.title }} - {{ job.description }}</li>
+  {% endfor %}
+</ul>

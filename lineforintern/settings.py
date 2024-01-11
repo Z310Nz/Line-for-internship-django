@@ -25,7 +25,15 @@ SECRET_KEY = 'django-insecure-&csdciu#fzsd=(-gan+w%+x#^6ov8ze@i*mupyf9dly2#0rr0+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'bb51-183-88-21-175.ngrok-free.app']
+
+CORS_ALLOWED_ORIGINS = [
+    "https://bb51-183-88-21-175.ngrok-free.app",
+]
+
+CSRF_COOKIE_SECURE = True
+CSRF_USE_SESSIONS = True
+
 
 
 # Application definition
@@ -46,6 +54,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.line',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -91,8 +100,15 @@ WSGI_APPLICATION = 'lineforintern.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'lineforintern',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -114,6 +130,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.line.LineOAuth2',
@@ -161,6 +179,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SOCIAL_AUTH_LINE_KEY = '2001579846'
 SOCIAL_AUTH_LINE_SECRET = '0b1cbba3a5d2b14e4db1c53ac899d1bf'
+
+LOGIN_URL = 'account_login'
 
 # Redirect URL after a successful login
 LOGIN_REDIRECT_URL = 'professor:dashboard'

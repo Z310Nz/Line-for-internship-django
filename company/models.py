@@ -15,6 +15,7 @@ class Company(models.Model):
     province = models.CharField(max_length=255)
     postal_code = models.CharField(max_length=255)
     address_label = models.CharField(max_length=255)
+    line_id = models.CharField(max_length=255, blank=True)
 
 class Job(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True, default='')

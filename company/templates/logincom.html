@@ -2,18 +2,22 @@
   <head>
     <title>Company Login</title>
   </head>
+  <body>
     <!-- Your LINE login UI goes here -->
     <h2>Company Login</h2>
-    <form action="company_login.php" method="post">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" required><br><br>
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" required><br><br>
-      <input type="submit" value="Login">
-    </form>
-    <br>
-    <button onclick="window.location.href='{% url 'company:register_company' %}'">
-      Company
+    <a
+      href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2002762157&redirect_uri=https://bb51-183-88-21-175.ngrok-free.app/company/logincom/callback/&state=YOUR_STATE&scope=openid%20profile"
+    >
+      <img
+        alt="Login with LINE"
+        src="https://scdn.line-apps.com/n/line_login/btn.png"
+      />
+    </a>
+    <br />
+    <button
+      onclick="window.location.href='{% url 'company:register_company' %}'"
+    >
+      Register as a Company
     </button>
   </body>
 </html>

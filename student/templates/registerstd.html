@@ -1,3 +1,4 @@
+<!-- registerstd.html -->
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -8,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/stylestd.css' %}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
-    <title>Student Regisration Form</title> 
+    <title>Student Registration Form</title> 
 </head>
 <body>
     <div class="container">
@@ -19,10 +20,11 @@
             {{ form.errors }}
             <div class="form first">
                 <div class="company details">
-                    <lebel>Your picture</lebel>
+                    <label>Your picture</label>
                     <input name="profile" type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" required>
 
                     <div class="fields">
+                        <!-- ต่อไปนี้ให้ใช้ <label> แทน <lebel> -->
                         <div class="input-field">
                             <label>Student ID</label>
                             <input name="student_id" type="number" placeholder="Enter your student ID" required>
@@ -96,7 +98,7 @@
                 <div class="student details">
                     <span class="title">Details</span>
                         <div class="input-field">
-                            <lebel>Upload your CV/Resume</lebel>
+                            <label>Upload your CV/Resume</label>
                             <input name="cv" type="text" placeholder="Enter your CV link">
                         </div>
 
