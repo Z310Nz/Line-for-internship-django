@@ -121,6 +121,8 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+AUTH_USER_MODEL = 'professor.Professor'
+
 SOCIALACCOUNT_PROVIDERS = {
     'line': {
         'SCOPE': ['profile', 'openid'],
@@ -161,5 +163,6 @@ SOCIAL_AUTH_LINE_KEY = '2001579846'
 SOCIAL_AUTH_LINE_SECRET = '0b1cbba3a5d2b14e4db1c53ac899d1bf'
 
 # Redirect URL after a successful login
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'professor:dashboard'
 SOCIAL_AUTH_LINE_EXTRA_DATA = ['email']
+LOGOUT_REDIRECT_URL = '/'
