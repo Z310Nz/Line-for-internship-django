@@ -19,10 +19,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-&csdciu#fzsd=(-gan+w%+x#^6ov8ze@i*mupyf9dly2#0rr0+'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'bb51-183-88-21-175.ngrok-free.app', '.vercel.app']
@@ -33,10 +31,6 @@ CORS_ALLOWED_ORIGINS = [
 
 CSRF_COOKIE_SECURE = True
 CSRF_USE_SESSIONS = True
-
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
