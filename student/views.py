@@ -1,16 +1,31 @@
 # views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Student
-from .forms import StudentForm
-from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_exempt
+from .models import Student
+from .forms import StudentForm
+from django.urls import reverse
+from linebot import LineBotApi, WebhookHandler
+from linebot.exceptions import InvalidSignatureError
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django.views.decorators.csrf import csrf_exempt
+from .models import Student
+from .forms import StudentForm
+from django.urls import reverse
 
+# Import LIFF SDK
+from linebot import LineBotApi, WebhookHandler
+from linebot.exceptions import InvalidSignatureError
+
+line_bot_api = LineBotApi('bPGIDybNuOJyZ2vo6+25vHTQ5Olq9Hg1HtTqxvPR1vE7CJOALaUVH98BK/LFwiSa0HLJdKo+UZkdmDoHbtFquvmLbDYO0kFGQA3WCx7XtxqnOHpJHxtD96qBxLjldbI09zGYEotbIA7DS1LM6U5sLAdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('0b1cbba3a5d2b14e4db1c53ac899d1bf')
 # Student app views.py
 def line_login_callback(request):
-    user = authenticate(request, line_id=request.GET.get('line_id'))
-    
+    user = authenticate(request, line_id=request.GET.get('id_line'))
+
     if user is not None and user.is_student:
         login(request, user)
         return redirect('student:profile', student_id=user.student.id)
@@ -20,9 +35,15 @@ def line_login_callback(request):
     else:
         return redirect('student:register')
 
-
+@csrf_exempt
 def login(request):
-    # Your LINE login implementation using LIFF
+    if request.method == 'POST':
+        if 'user_role' in request.session:
+            role = request.session['user_role']
+            return redirect('student:profile') if role == 'student' else redirect('company:profile')
+        else:
+            # No user role in session, redirect to register
+            return redirect('student:register')
     return render(request, 'login.html')
 
 @csrf_exempt
@@ -31,15 +52,45 @@ def register(request):
         form = StudentForm(request.POST, request.FILES)
         if form.is_valid():
             student = form.save()
-            return redirect('profile', student_id=student.id)  # Pass student_id as a parameter
+            return redirect('student:profile', student_id=student.id) # Pass student_id as a parameter
     else:
         form = StudentForm()
 
     return render(request, 'registerstd.html', {'form': form})
 
 
-@login_required
 def profile(request, student_id):
-    student = Student.objects.get(id=student_id)  # Retrieve the student using the provided student_id
-    # Your profile logic here
+    student = Student.objects.get(id=student_id)
+    # Your student profile logic here
+    return render(request, 'profile.html', {'student': student})
+
+
+
+@csrf_exempt
+def login(request):
+    if request.method == 'POST':
+        if 'user_role' in request.session:
+            role = request.session['user_role']
+            return redirect('student:profile') if role == 'student' else redirect('company:profile')
+        else:
+            # No user role in session, redirect to register
+            return redirect('student:register')
+    return render(request, 'login.html')
+
+@csrf_exempt
+def register(request):
+    if request.method == 'POST':
+        form = StudentForm(request.POST, request.FILES)
+        if form.is_valid():
+            student = form.save()
+            return redirect('student:profile', student_id=student.id) # Pass student_id as a parameter
+    else:
+        form = StudentForm()
+
+    return render(request, 'registerstd.html', {'form': form})
+
+
+def profile(request, student_id):
+    student = Student.objects.get(id=student_id)
+    # Your student profile logic here
     return render(request, 'profile.html', {'student': student})

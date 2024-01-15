@@ -8,6 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/stylestd.css' %}">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/solid.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/uicons-solid-rounded.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/uicons-solid.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/uicons-thin.css">
+
 
     <title>Student Registration Form</title> 
 </head>
@@ -24,7 +30,6 @@
                     <input name="profile" type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" required>
 
                     <div class="fields">
-                        <!-- ต่อไปนี้ให้ใช้ <label> แทน <lebel> -->
                         <div class="input-field">
                             <label>Student ID</label>
                             <input name="student_id" type="number" placeholder="Enter your student ID" required>
@@ -32,7 +37,7 @@
 
                         <div class="input-field">
                             <label>First name</label>
-                            <input name="first_name" type="text" placeholder="Enter your first name" required>
+                            <input name="name" type="text" placeholder="Enter your first name" required>
                         </div>
 
                         <div class="input-field">
@@ -85,6 +90,11 @@
                             <label>Website (if any)</label>
                             <input name="website" type="text" placeholder="Enter your website">
                         </div>
+
+                        {% comment %} <div class="input-field">
+                            <label>Line Token (No need to fill in)</label>
+                            <input name="website" type="text" placeholder="Enter your website">
+                        </div> {% endcomment %}
                     </div>
 
                     <button class="nextBtn">
@@ -175,5 +185,24 @@
         </form>
     </div>
     <script src="{% static 'js/scriptstd.js' %}"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script>
+        async function getUserProfile() {
+            const profile = await liff.getProfile()
+            document.getElementById("userId").append(profile.userId)
+            document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+        }
+        async function main() {
+            await liff.init({ liffId: "2001579846-Eo80gYQZ" })
+            document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+            if (liff.isLoggedIn()) {
+            getEnvironment()
+            getUserProfile()
+            getContext()
+            getFriendship()
+            createUniversalLink()
+            }
+        }
+    </script>
 </body>
 </html>

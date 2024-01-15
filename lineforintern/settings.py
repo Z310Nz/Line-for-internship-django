@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.line',
     'corsheaders',
+    'linebot',
 ]
 
 MIDDLEWARE = [
@@ -145,6 +146,7 @@ SOCIALACCOUNT_PROVIDERS = {
     'line': {
         'SCOPE': ['profile', 'openid'],
         'VERIFIED_EMAIL': True,
+        'AUTH_PARAMS': {'response_type': 'code'},
     }
 }
 
@@ -180,9 +182,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SOCIAL_AUTH_LINE_KEY = '2001579846'
 SOCIAL_AUTH_LINE_SECRET = '0b1cbba3a5d2b14e4db1c53ac899d1bf'
 
-LOGIN_URL = 'account_login'
-
 # Redirect URL after a successful login
-LOGIN_REDIRECT_URL = 'professor:dashboard'
+LOGIN_URL = 'student:profile'
+LOGIN_REDIRECT_URL = 'student:profile'
+
+# สำหรับ company
+# LOGIN_URL = 'company:login'
+# LOGIN_REDIRECT_URL = 'company:profile'
+
 SOCIAL_AUTH_LINE_EXTRA_DATA = ['email']
 LOGOUT_REDIRECT_URL = '/'

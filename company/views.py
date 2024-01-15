@@ -45,20 +45,12 @@ def register_company(request):
 
     return render(request, 'registercom.html', {'company_form': company_form, 'job_form': job_form})
 
-@login_required
 def profile(request):
-    # Assuming you have a custom User model for the Company
     company = request.user.company
-    
-    # Assuming you have a model named 'Job' related to the Company model
     jobs = company.job_set.all()
-
-    # You can add other data retrieval logic here based on your models
-    
     context = {
         'company': company,
         'jobs': jobs,
-        # Add other data to the context as needed
     }
 
     return render(request, 'profilecom.html', context)

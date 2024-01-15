@@ -11,5 +11,5 @@ urlpatterns = [
     path('logincom/', login, name='login'),
     path('registercom/', register_company, name='register_company'),
     path('logincom/callback/', line_login_callback, name='line_login_callback'),
-    path('profilecom/', profile, name='profile')
+    path('profilecom/<int:company_id>/', profile, name='profile')
 ]

@@ -26,6 +26,8 @@ class Student(models.Model):
     intern_end = models.DateField()
     eng_skill = models.CharField(max_length=200)
     id_line = models.CharField(max_length=255, blank=True)
+    access_token = models.CharField(max_length=255, blank=True)
+    user_role = models.CharField(max_length=255, default='student', blank=True)
     # Add other fields as needed
 
     def __str__(self):
