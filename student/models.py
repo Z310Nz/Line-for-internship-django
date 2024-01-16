@@ -9,7 +9,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=100)
     nick_name = models.CharField(max_length=100)
     birthday = models.DateField()
-    gender = models.BooleanField()  # True: Male / False: Female
+    gender = models.CharField(max_length=200)
     email = models.EmailField()
     phone = models.CharField(max_length=10)
     line_id = models.CharField(max_length=200)
