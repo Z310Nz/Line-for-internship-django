@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "lineforintern/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "lineforintern/wsgi.py",
+      "methods": ["GET"]
+    }
+  ],
+  "config": {
+    "maxLambdaSize": "15mb",
+    "runtime": "python3.9",
+    "build": {
+      "functions": {
+        "api/**/*.py": {
+          "runtime": "python3.9"
+        }
+      }
+    }
+  }
+}

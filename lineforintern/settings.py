@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import os.path
+import dj_database_url
+import django_heroku
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,16 +23,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-&csdciu#fzsd=(-gan+w%+x#^6ov8ze@i*mupyf9dly2#0rr0+'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+CORS_ALLOWED_ORIGINS = [
+    "https://1c37-202-28-20-239.ngrok-free.app",
+]
 
-# Application definition
+CSRF_COOKIE_SECURE = True
+CSRF_USE_SESSIONS = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -43,6 +49,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.line',
+    'corsheaders',
+    'linebot',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +83,11 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
+
 WSGI_APPLICATION = 'lineforintern.wsgi.application'
 
 
@@ -83,10 +96,18 @@ WSGI_APPLICATION = 'lineforintern.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'lineforintern',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
 
 
 # Password validation
@@ -107,16 +128,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SITE_ID = 1
+
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.line.LineOAuth2',
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+AUTH_USER_MODEL = 'professor.Professor'
+
 SOCIALACCOUNT_PROVIDERS = {
     'line': {
         'SCOPE': ['profile', 'openid'],
         'VERIFIED_EMAIL': True,
+        'AUTH_PARAMS': {'response_type': 'code'},
     }
 }
 
@@ -137,6 +163,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    ('css', BASE_DIR / "company/templates/static/css"),
+    ('js', BASE_DIR / "company/templates/static/js"),
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -148,5 +179,12 @@ SOCIAL_AUTH_LINE_KEY = '2001579846'
 SOCIAL_AUTH_LINE_SECRET = '0b1cbba3a5d2b14e4db1c53ac899d1bf'
 
 # Redirect URL after a successful login
-LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'student:profile'
+LOGIN_REDIRECT_URL = 'student:profile'
+
+# สำหรับ company
+# LOGIN_URL = 'company:login'
+# LOGIN_REDIRECT_URL = 'company:profile'
+
 SOCIAL_AUTH_LINE_EXTRA_DATA = ['email']
+LOGOUT_REDIRECT_URL = '/'

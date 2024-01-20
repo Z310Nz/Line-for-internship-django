@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Company Regisration Form</title> 
+</head>
+<body>
+    <div class="container">
+        <header>Registration</header>
+
+        <form action="{% url 'company:register_company' %}" method="post">
+            {% csrf_token %}
+            {{ form.errors }}
+            <div class="form first">
+                <div class="company details">
+                    <label>Company logo</label>
+                    <input name="logoc" type="file" accept="image/jpeg, image/png, image/jpg" id="input-file">
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Company name</label>
+                            <input type="text" name="company_name" placeholder="Enter your company name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Foundation date</label>
+                            <input name="foundation_date" type="date" placeholder="Choose your company foundation date" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Company type</label>
+                            <input name="company_type" type="text" placeholder="Enter your company type" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Number of employee</label>
+                            <input name="number_of_employees" type="number" placeholder="Enter number of employee" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Website</label>
+                            <input name="website" type="text" placeholder="Enter your company website" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input name="email" type="text" placeholder="Enter your company email" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Company Address">
+                    <span class="title">Company Address</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Address</label>
+                            <input name="address" type="text" placeholder="Enter your company address" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>City</label>
+                            <input name="city" type="text" placeholder="Enter your company city" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>State/Province</label>
+                            <input name="province" type="text" placeholder="Enter your company state/province" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Country</label>
+                            <input name="country" type="text" placeholder="Enter your company country" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Postal code</label>
+                            <input name="postal_code" type="number" placeholder="Enter your company postal code" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Address label</label>
+                            <select name="address_label" required>
+                                <option disabled selected>Select lebel</option>
+                                <option>Business</option>
+                                <option>Home</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="nextBtn">
+                        <span class="btnText">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div> 
+            </div>
+
+            <div class="form second">
+                <div class="Jobs details">
+                    <span class="title">Jobs details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Work place</label>
+                            <input name="workplace" type="text" placeholder="Onsite/Hybrid/Online" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Work type</label>
+                            <input name="worktype" type="text" placeholder="full-time/part-time/Intern" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Qualification</label>
+                            <input name="quality" type="text" placeholder="Enter qualification" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Company benefits</label>
+                            <input name="benefit" type="text" placeholder="Enter company benefits" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Time to clock in</label>
+                            <input name="workstart" type="time" placeholder="Enter Time to clock in" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Time to clock out</label>
+                            <input name="workend" type="time" placeholder="Enter Time to clock out" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Working day</label>
+                            <select name="workday" required>
+                                <option disabled selected>Select number of working day in a week</option>
+                                <option>5 day per week</option>
+                                <option>6 day per week</option>
+                                <option>Others</option>
+                            </select>
+                        </div>           
+                    </div>
+                </div>
+                    <div class="buttons">
+                        <div class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">Back</span>
+                        </div>
+                        
+                        <button class="submit" type="submit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+        </form>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
