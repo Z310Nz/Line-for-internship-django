@@ -2,10 +2,14 @@
 # exit on error
 set -o errexit
 
+# Install Python dependencies from requirements.txt
 pip install -r requirements.txt
+
+# Install additional packages like line-bot-sdk and django-allauth
 pip install line-bot-sdk
 pip install django-allauth
 
+# Run Django migrations
 python manage.py makemigrations
 python manage.py collectstatic --no-input
 python manage.py migrate
