@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-&csdciu#fzsd=(-gan+w%+x#^6ov8ze@i*mupyf9dly2#0rr0+'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -97,22 +97,19 @@ WSGI_APPLICATION = 'lineforintern.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-if not DEBUG:
-    DATABASES = {'default': dj_database_url.parse(os.environ.get('postgres://lineforintern_user:KdtPDUm12EcbivbwhzO5wslqSHPG4JYN@dpg-cmlni7n109ks7393m1h0-a.singapore-postgres.render.com/lineforintern'))}
-else:
-    DATABASES = {
-        'default': {
-            # 'ENGINE': 'django.db.backends.sqlite3',
-            # 'NAME': BASE_DIR / 'db.sqlite3',
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
 
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'lineforintern',
-            'USER': 'root',
-            'PASSWORD': '',
-            'HOST': 'localhost',
-            'PORT': '3306',
-        }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'lineforintern',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
+}
 
 
 # Password validation
