@@ -1,8 +1,9 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 # Create your models here.
-
-class Student(models.Model):
+USER_MODEL = get_user_model()
+class Student(USER_MODEL):
     profile = models.ImageField(upload_to='profile/', null=True, blank=True)
     student_id = models.IntegerField()
     name = models.CharField(max_length=100)

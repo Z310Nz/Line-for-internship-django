@@ -1,9 +1,10 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-class Professor(AbstractUser):
-    password = models.CharField(max_length=128, default='adminup1234')
-    username =models.CharField(max_length=128, default='adminupse', unique=True)
+from django.contrib.auth import get_user_model
 
-    def __str__(self):
-        return self.username
+# Create your models here.
+USER_MODEL = get_user_model()
+
+class Professor(USER_MODEL):
+    pass
