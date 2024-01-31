@@ -2,9 +2,50 @@
 <html>
   <head>
     <title>Welcome Page</title>
+    <style>
+      body {
+        text-align: center;
+        padding: 50px;
+      }
+
+      h2 {
+        color: #333;
+      }
+
+      p {
+        color: #666;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
   </head>
   <body>
     <h2>Welcome to the Internship Portal</h2>
     <p>Please choose your role:</p>
+    <button onclick="window.location.href='{% url 'student:login' %}'">
+      Student
+    </button>
+    <button onclick="window.location.href='{% url 'company:login' %}'">
+      Company
+    </button>
+    <button onclick="window.location.href='{% url 'admin:login' %}'">
+      Professor
+    </button>
   </body>
 </html>
