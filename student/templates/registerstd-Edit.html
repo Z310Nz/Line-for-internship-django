@@ -1,0 +1,217 @@
+<!-- registerstd.html -->
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- แยกไฟล์ CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylestd.css' %}">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/solid.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/uicons-solid-rounded.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/uicons-solid.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/uicons-thin.css">
+
+
+    <title>Student Registration Form</title> 
+</head>
+<body>
+    <div class="container">
+        <header>Student Registration</header>
+
+        <form action="{% url 'student:register' %}" method="post"> 
+            {% csrf_token %}
+            {{ form.errors }}
+            <div class="form first">
+                <div class="company details">
+                    <label>Your picture</label>
+
+                    <!-- ใช้ Label สำหรับปุ่ม Next -->
+                    <input name="profile" type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" required>
+                    <!-- ใช้ Label สำหรับปุ่ม Next -->
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Student ID</label>
+                            <input name="student_id" type="number" placeholder="Enter your student ID" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>First name</label>
+                            <input name="name" type="text" placeholder="Enter your first name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Last name</label>
+                            <input name="last_name" type="text" placeholder="Enter your last name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Nick name</label>
+                            <input name="nick_name" type="text" placeholder="Enter your nick name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Date of birth</label>
+                            <input name="birthday" type="date" placeholder="Choose your date of birth" required>
+                        </div>
+
+                        <!-- แก้ไข Dropdown Options -->
+                        <div class="input-field">
+                            <label>Gender</label>
+                            <select name="gender" required>
+                            <option>Select your gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Others</option>
+                        </select>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="student contact">
+                    <span class="title">Contact</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input name="email" type="email" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Phone number</label>
+                            <input name="phone" type="number" placeholder="Enter your phone number" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Line ID</label>
+                            <input name="line_id" type="text" placeholder="Enter your line ID" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Website (if any)</label>
+                            <input name="website" type="text" placeholder="Enter your website">
+                        </div>
+                    </div>
+                    
+                    <!--ใช้ Label สำหรับปุ่ม Next -->
+                    <label for="nextBtn" class="nextBtn">
+                        <span class="btnText">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </label>
+                    <!-- ใช้ Label สำหรับปุ่ม Next -->
+                </div> 
+            </div>
+
+            <div class="form second">
+                <div class="student details">
+                    <span class="title">Details</span>
+                        <div class="input-field">
+                            <label>Upload your CV/Resume</label>
+                            <input name="cv" type="text" placeholder="Enter your CV link">
+                        </div>
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Your last internship jobs</label>
+                                <input name="intern_job" type="text" placeholder="Enter your last internship jobs" required>
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Jobs description</label>
+                                <input name="intern_des" type="text" placeholder="Enter your jobs description" required>
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Company name</label>
+                                <input name="intern_company" type="text" placeholder="Enter a company that you used to be a trainee for" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Interested jobs</label>
+                                <input name="interest_job" type="text" placeholder="Enter your interested jobs/positions" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Skills</label>
+                                <input name="skill" type="text" placeholder="Enter your skills/expertise" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Education level</label>
+                                <input name="education" type="text" placeholder="Enter your education" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>GPA</label>
+                                <input name="gpa" type="number" placeholder="Enter your GPA" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Start date of internship</label>
+                                <input name="intern_start" type="date" placeholder="Choose your start date of internship" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>End date of internship</label>
+                                <input name="intern_end" type="date" placeholder="Choose your end date of internship" required>
+                            </div>
+
+                            <div class="input-field">
+                                <label>English skill</label>
+                                <select name="eng_skill" required>
+                                    <option disabled selected>Select your english skill</option>
+                                    <option>Fair enough</option>
+                                    <option>Moderate</option>
+                                    <option>Very good</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">Back</span>
+                        </div>
+                        
+                        <button class="sumbit" type="submit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div>
+            </div> 
+        </form>
+    </div>
+    <!-- แยกไฟล์ JavaScript -->
+    <script src="{% static 'js/scriptstd.js' %}"></script>
+    <!-- JavaScript -->
+
+    <!-- การใช้ HTTPS สำหรับ External Resources -->
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script>
+        async function getUserProfile() {
+            const profile = await liff.getProfile()
+            document.getElementById("userId").append(profile.userId)
+            document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+        }
+        async function main() {
+            await liff.init({ liffId: "2001579846-Eo80gYQZ" })
+            document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+            if (liff.isLoggedIn()) {
+            getEnvironment()
+            getUserProfile()
+            getContext()
+            getFriendship()
+            createUniversalLink()
+            }
+        }
+    </script>
+    <!-- การใช้ HTTPS สำหรับ External Resources -->
+</body>
+</html>
